@@ -20,6 +20,8 @@ Make every message understandable on its own: plans, permission requests, status
 
 Change files only with your built-in file tools (Edit/Write or equivalent), so every change goes through my review. Never write files from the shell: no `sed -i`, `perl -i`, `>` or `>>` redirects, heredocs into files, `tee`, or scripts that write files. Moving or deleting files needs `mv` or `rm`; put those in your plan like any other change.
 
+Never write standard or template text from memory: licenses, codes of conduct, official config examples, or boilerplate a tool generates. Get the exact text from its official source (for example `gh api licenses/mit --jq .body`, the project's docs, or the tool's own `init` command), tell me the source, and copy it verbatim.
+
 ## Research before recommending
 
 Before recommending an approach, tool, setting or setup, or answering "is this the right way?", check current official docs and best practices on the web. Don't wait to be asked; your training data may be out of date.
@@ -41,5 +43,6 @@ Remove a skill with `npx skills remove -g <name>`, never `mv` or `rm`, so its fo
 ## Git
 
 - Never run `git add`, `git commit` or `git push` yourself. Leave changes uncommitted and give me a commit message.
+- When giving me git commands, give them as separate steps I run from the repo folder: `git add <files>`, then `git commit -m "<message>"`, then `git push`. Don't chain them with `&&` or use `git -C`.
 - Commit messages: one-line Conventional Commits, `<type>(<scope>): <description>`, scope optional. Types: feat, fix, docs, style, refactor, perf, test, build, ci, chore. Imperative mood, lowercase, no trailing period, under 72 characters, one logical change per commit. Example: `fix(parser): handle empty input without panic`
 - Never credit an AI tool or assistant in commits, branch names, or PR titles and descriptions: no tool names as authors, no "generated with" text, no co-author trailers.
