@@ -1,27 +1,16 @@
 # .agents
 
-My global rules for coding agents: one `AGENTS.md` that Claude Code, Codex and Cursor all read. I clone this repo on each machine, so `git pull` updates every agent.
-
-To just try the rules, copy `AGENTS.md` into the files in the table below.
+My global rules for coding agents: one `AGENTS.md` that Claude Code, Codex and Cursor all read.
 
 ## Setup
 
 Paste this into Claude Code, Codex or Cursor:
 
 ```text
-Set up the agent rules from https://github.com/rishiskhare/.agents: clone it to ~/.agents, link ~/.codex/AGENTS.md to ~/.agents/AGENTS.md, and add the line @~/.agents/AGENTS.md to ~/.claude/CLAUDE.md. If I use Cursor, copy AGENTS.md to my clipboard for its User Rules. Check what already exists first, keep existing files, and show me each change and wait for my yes before making it.
+Install the agent rules from https://raw.githubusercontent.com/rishiskhare/.agents/main/AGENTS.md: download them to ~/.agents/AGENTS.md, link ~/.codex/AGENTS.md to that file, and add the line @~/.agents/AGENTS.md to ~/.claude/CLAUDE.md if it isn't there. If I use Cursor, copy the rules to my clipboard for its User Rules. Keep what's already in my files, and show me each change and wait for my yes before making it.
 ```
 
-Or run these on macOS or Linux, then paste `AGENTS.md` into Cursor Settings → Rules → User Rules:
-
-```bash
-git clone https://github.com/rishiskhare/.agents.git ~/.agents
-mkdir -p ~/.codex ~/.claude
-ln -s ~/.agents/AGENTS.md ~/.codex/AGENTS.md
-printf '\n@~/.agents/AGENTS.md\n' >> ~/.claude/CLAUDE.md
-```
-
-On Windows, or if `~/.agents` already exists (`npx skills` installs skills there), use the prompt.
+This sets up:
 
 | Agent | Reads the rules from |
 | --- | --- |
@@ -29,14 +18,16 @@ On Windows, or if `~/.agents` already exists (`npx skills` installs skills there
 | Codex | `~/.codex/AGENTS.md`, a link to `~/.agents/AGENTS.md` |
 | Cursor | A pasted copy in User Rules |
 
+To set it up without an agent, copy `AGENTS.md` into those places by hand.
+
 ## Check
 
 In each agent, start a new session and ask "What are my global rules? List the section headings." The answer should match the `##` headings in `AGENTS.md`. If Codex doesn't show them, remove `~/.codex/AGENTS.override.md`, which takes priority.
 
 ## Update
 
-Run `cd ~/.agents`, then `git pull`, then paste `AGENTS.md` into Cursor again.
+Paste the setup prompt again. If you cloned this repo to edit the rules, run `git pull` in it instead.
 
 ## Remove
 
-Delete `~/.codex/AGENTS.md`, remove the `@~/.agents/AGENTS.md` line from `~/.claude/CLAUDE.md`, and clear Cursor's User Rules.
+Delete `~/.agents/AGENTS.md` and `~/.codex/AGENTS.md`, remove the `@~/.agents/AGENTS.md` line from `~/.claude/CLAUDE.md`, and clear Cursor's User Rules.
