@@ -1,51 +1,42 @@
 # .agents
 
-My global rules for coding agents: one `AGENTS.md`, shared by Claude Code, Codex and Cursor.
+My global rules for coding agents: one `AGENTS.md` that Claude Code, Codex and Cursor all read. I clone this repo on each machine, so `git pull` updates every agent.
+
+To just try the rules, copy `AGENTS.md` into the files in the table below.
 
 ## Setup
 
-**Easiest:** paste this into Claude Code, Codex or Cursor:
+Paste this into Claude Code, Codex or Cursor:
 
 ```text
-Set up my agent rules from https://github.com/rishiskhare/.agents by following its README for my OS. First check what already exists, show me every command, and wait for my yes. Never overwrite or delete a file without asking. When done, run its "Check" step and copy AGENTS.md to my clipboard for Cursor.
+Set up the agent rules from https://github.com/rishiskhare/.agents: clone it to ~/.agents, link ~/.codex/AGENTS.md to ~/.agents/AGENTS.md, and add the line @~/.agents/AGENTS.md to ~/.claude/CLAUDE.md. If I use Cursor, copy AGENTS.md to my clipboard for its User Rules. Check what already exists first, keep existing files, and show me each change and wait for my yes before making it.
 ```
 
-**By hand:** run the command for your OS, then paste `AGENTS.md` into Cursor Settings → Rules → User Rules.
-
-macOS / Linux:
+Or run these on macOS or Linux, then paste `AGENTS.md` into Cursor Settings → Rules → User Rules:
 
 ```bash
-git init -b main ~/.agents && git -C ~/.agents remote add origin https://github.com/rishiskhare/.agents.git && git -C ~/.agents pull origin main && git -C ~/.agents branch -u origin/main && mkdir -p ~/.codex ~/.claude && ln -s ~/.agents/AGENTS.md ~/.codex/AGENTS.md && echo '@../.agents/AGENTS.md' >> ~/.claude/CLAUDE.md
+git clone https://github.com/rishiskhare/.agents.git ~/.agents
+mkdir -p ~/.codex ~/.claude
+ln -s ~/.agents/AGENTS.md ~/.codex/AGENTS.md
+printf '\n@~/.agents/AGENTS.md\n' >> ~/.claude/CLAUDE.md
 ```
 
-Windows (PowerShell; the Codex link needs Developer Mode or an admin shell):
+On Windows, or if `~/.agents` already exists (`npx skills` installs skills there), use the prompt.
 
-```powershell
-git init -b main "$HOME\.agents"; git -C "$HOME\.agents" remote add origin https://github.com/rishiskhare/.agents.git; git -C "$HOME\.agents" pull origin main; git -C "$HOME\.agents" branch -u origin/main; New-Item -ItemType Directory -Force "$HOME\.codex","$HOME\.claude" | Out-Null; cmd /c mklink "$HOME\.codex\AGENTS.md" "$HOME\.agents\AGENTS.md"; Add-Content "$HOME\.claude\CLAUDE.md" '@../.agents/AGENTS.md'
-```
-
-| Agent | How it gets the rules |
+| Agent | Reads the rules from |
 | --- | --- |
-| Claude Code | `~/.claude/CLAUDE.md` imports them with `@../.agents/AGENTS.md` |
-| Codex | `~/.codex/AGENTS.md` links to them |
+| Claude Code | `~/.claude/CLAUDE.md`, which imports `~/.agents/AGENTS.md` |
+| Codex | `~/.codex/AGENTS.md`, a link to `~/.agents/AGENTS.md` |
 | Cursor | A pasted copy in User Rules |
-
-Existing files in `~/.agents`, like skills from `npx skills`, are kept. In WSL, use the macOS / Linux command.
 
 ## Check
 
-In each agent, start a new session and ask "What are my global rules? List the section headings." The answer should match the `##` headings in `AGENTS.md`.
+In each agent, start a new session and ask "What are my global rules? List the section headings." The answer should match the `##` headings in `AGENTS.md`. If Codex doesn't show them, remove `~/.codex/AGENTS.override.md`, which takes priority.
 
 ## Update
 
-Run `git -C ~/.agents pull`, then paste `AGENTS.md` into Cursor again.
-
-## Troubleshooting
-
-- **Pull fails because `AGENTS.md` exists:** rename yours, rerun the command, and merge anything you need into the new one.
-- **Link fails because `~/.codex/AGENTS.md` exists:** move it aside and rerun. On Windows without Developer Mode, copy the file instead: `Copy-Item "$HOME\.agents\AGENTS.md" "$HOME\.codex\AGENTS.md"`, and copy it again after each update.
-- **Codex ignores the rules:** remove `~/.codex/AGENTS.override.md`, which takes priority.
+Run `cd ~/.agents`, then `git pull`, then paste `AGENTS.md` into Cursor again.
 
 ## Remove
 
-Delete `~/.codex/AGENTS.md`, remove the `@../.agents/AGENTS.md` line from `~/.claude/CLAUDE.md`, and clear Cursor's User Rules.
+Delete `~/.codex/AGENTS.md`, remove the `@~/.agents/AGENTS.md` line from `~/.claude/CLAUDE.md`, and clear Cursor's User Rules.
