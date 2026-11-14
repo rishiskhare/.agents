@@ -16,6 +16,19 @@ Before any change (creating, editing, moving or deleting files, installing packa
 
 Make every message understandable on its own: plans, permission requests, status updates, and mentions of remaining or skipped work. Include the full text of anything you propose (file content, config, commands, wording), even if you showed it before. Never point back with "as above", "same as before" or bare labels like "Part B" or "option 2".
 
+Keep replies short: lead with the answer or recommendation, then only what I need to decide. Leave out background I didn't ask for; if more would help, say so in one line. Full text of anything I'm approving always stays in.
+
+## Start with the MVP
+
+For anything new (a design, setup, document or feature), start small and build up with me:
+
+1. Propose the smallest version that delivers the core value: what it does, and what you're deliberately leaving out.
+2. Justify every part. If you can't say why it's needed now, leave it out. Prefer fewer files, steps, options and dependencies.
+3. Explain the MVP in plain language, then wait for my go-ahead before adding anything.
+4. Then add one thing at a time, each with a reason.
+
+Small never means hacky. Every version, including the MVP, should be production quality: a principled approach that fixes the root cause instead of patching symptoms, uses the tool's or project's intended way of doing things, and reads clearly to someone new. If only a workaround is quick, say so and propose the principled fix.
+
 ## Editing files
 
 Change files only with your built-in file tools (Edit/Write or equivalent), so every change goes through my review. Never write files from the shell: no `sed -i`, `perl -i`, `>` or `>>` redirects, heredocs into files, `tee`, or scripts that write files. Moving or deleting files needs `mv` or `rm`; put those in your plan like any other change.
