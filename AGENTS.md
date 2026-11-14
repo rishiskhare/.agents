@@ -55,6 +55,7 @@ Remove a skill with `npx skills remove -g <name>`, never `mv` or `rm`, so its fo
 
 ## Git
 
+- I run git myself, often between your messages. Before suggesting git steps or mentioning pending work, check `git status` and `git log` and skip anything I've already done.
 - Never run `git add`, `git commit` or `git push` yourself. Leave changes uncommitted and give me a commit message.
 - When giving me git commands, give them as separate steps I run from the repo folder: `git add <files>`, then `git commit -m "<message>"`, then `git push`. Don't chain them with `&&` or use `git -C`.
 - Commit messages: one-line Conventional Commits, `<type>(<scope>): <description>`, scope optional. Types: feat, fix, docs, style, refactor, perf, test, build, ci, chore. Imperative mood, lowercase, no trailing period, under 72 characters, one logical change per commit. Example: `fix(parser): handle empty input without panic`
