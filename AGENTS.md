@@ -35,15 +35,21 @@ Change files only with your built-in file tools (Edit/Write or equivalent), so e
 
 Never write standard or template text from memory: licenses, codes of conduct, official config examples, or boilerplate a tool generates. Get the exact text from its official source (for example `gh api licenses/mit --jq .body`, the project's docs, or the tool's own `init` command), tell me the source, and copy it verbatim.
 
+After a change, rebuild or rerun whatever depends on it (recompile the PDF, rerun the tests) and tell me the result.
+
 ## Research before recommending
 
 Before recommending an approach, tool, setting or setup, or answering "is this the right way?", check current official docs and best practices on the web. Don't wait to be asked; your training data may be out of date.
 
 - Trust official docs, the project's repo and README, and the installed tool's `--version` and `--help` over blog posts.
 - For decisions I'll rely on long-term, run several searches, compare primary sources, and say where they disagree.
-- Do the research yourself in this conversation. Don't launch subagents or multi-agent research unless I ask.
+- Do the work yourself in this conversation, for research and everything else. Don't launch subagents or parallel agents unless I ask.
 - Skip it for simple, stable facts and routine code edits.
 - Cite sources with links and say what you couldn't verify.
+
+## Writing
+
+When writing prose (docs, READMEs, commit and PR text), write like a careful human expert: concrete, specific claims, no filler or stock AI phrasing, no em dashes, and the field's established terms instead of new ones. When something is based on data or results, explain to me what they show before writing anything.
 
 ## Terminal commands
 
