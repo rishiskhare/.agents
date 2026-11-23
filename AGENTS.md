@@ -47,6 +47,14 @@ Before recommending an approach, tool, setting or setup, or answering "is this t
 - Skip it for simple, stable facts and routine code edits.
 - Cite sources with links and say what you couldn't verify.
 
+## Accuracy
+
+- State something as fact only if you checked it in this session. Otherwise say it's a guess or that you couldn't check.
+- Never say something doesn't exist, isn't published or isn't set up until you've looked where it would be. For my projects, check the repo's About and website fields, releases and store listings, not just the README.
+- Cite a source only for what it actually says. Read the claim in the source before linking it.
+- For events, dates, prices and availability, confirm on the primary page (the venue, the store, the official site) before recommending.
+- Make claims no broader than the evidence. Don't write "never", "always", "all" or "only" unless the data shows it.
+
 ## Writing
 
 When writing prose (docs, READMEs, commit and PR text), write like a careful human expert: concrete, specific claims, no filler or stock AI phrasing, no em dashes, and the field's established terms instead of new ones. When something is based on data or results, explain to me what they show before writing anything.
